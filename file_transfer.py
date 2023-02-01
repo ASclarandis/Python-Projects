@@ -75,13 +75,15 @@ class ParentWindow(Frame):
         source_files = os.listdir(source)
         
         
-        #
+        # setting parameters to only transfer files that were created/modified within 24 hours
         for i in source_files:
             # gets the current time
-            current_time = datetime.now()
+            current_time = datetime.datetime.now()
             # gets the timestamp of when the file was last modified
-            modified_time = os.path.getmtime(source)
-            timeDifference = current_time - modified_time
+            modified_time = os.path.getmtime(source + '/' + i)
+            # convertimg modified_time to same data type as current_time in order to get time difference
+            mod_time = datetime.datetime.fromtimestamp(modified_time)
+            timeDifference = current_time - mod_time
             if timeDifference < timedelta(hours = 24):
                 # moves each file from the source to the destination
                 shutil.move(source + '/' + i, destination)
@@ -92,7 +94,6 @@ class ParentWindow(Frame):
         # root is the main GUI window, the tkinter destroy method
         # tells python to terminate root.mainloop and all widgets inside the GUI window
         root.destroy()
-
 
 
 
