@@ -1,4 +1,5 @@
-#Python Projects
+# Python-Projects
+
 This repository contains all of the Python projects assigned to me from The Tech Academy.
 
 **Game.py** This project created a game where the user can input if they would be nice or mean in given scenarios. The game keeps a score on how many times the user selects "nice" or "mean", then prints a message depending on their score. 
